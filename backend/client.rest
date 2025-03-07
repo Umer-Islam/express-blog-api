@@ -1,0 +1,35 @@
+GET http://localhost:2121/posts
+###
+
+
+
+
+// /catagoires
+###
+GET http://localhost:2121/catagory
+### 
+POST http://localhost:2121/catagory
+
+### 
+PUT http://localhost:2121/catagory
+### 
+DELETE http://localhost:2121/catagory
+
+
+###
+
+// /posts 
+GET http://localhost:2121/posts
+###
+POST http://localhost:2121/posts
+###
+PUT http://localhost:2121/posts
+###
+DELETE http://localhost:2121/posts
+
+###
+
+
+
+
+

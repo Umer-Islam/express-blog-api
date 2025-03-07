@@ -14,8 +14,8 @@ datasource db {
 }
 
 model Writer {
-  id       Int    @id @default(autoincrement())
-  username String @unique
+  id              Int      @id @default(autoincrement())
+  username        String   @unique
   email           String   @unique
   hashed_password String
   canCreatePosts  Boolean  @default(true)
@@ -24,8 +24,10 @@ model Writer {
 }
 
 model Catagories {
-  id   Int    @id @default(autoincrement())
-  name String
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
 }
 
 model Post {
@@ -35,6 +37,7 @@ model Post {
   writerId  Int
   writer    Writer   @relation(fields: [writerId], references: [id])
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Comments {
