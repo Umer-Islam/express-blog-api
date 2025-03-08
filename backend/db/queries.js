@@ -13,8 +13,12 @@ const db = {
   //get all catagories
   getAllCatagories: async () => {
     const catagories = await prisma.catagories.findMany({});
-    console.log(catagories);
+    // console.log(catagories);
     return catagories;
+  },
+  getCatagoryById: async (id) => {
+    const catagory = await prisma.catagories.findUnique({ where: { id } });
+    return catagory;
   },
   //create catagory
   createCatagory: async (name) => {
@@ -45,7 +49,10 @@ const db = {
     console.log(posts);
     return posts;
   },
-  getAllPostsByWriterId: async (writer_id) => {},
+  getAllPostsByWriterId: async (writerId) => {
+    const posts = await prisma.post.findMany({ where: { writerId } });
+    return posts;
+  },
   // get a single post by id
   getPostByPostId: async (params) => {},
   // create post
@@ -55,8 +62,18 @@ const db = {
     });
   },
   //edit post
-  
+  editPost: async (postId, title, body, writerId) => {
+    await prisma.post.update({
+      where: { id: postId },
+      data: { title, body },
+    });
+    return "post edited";
+  },
   // delete post
+  deletePost: async (postId) => {
+    await prisma.post.delete({ where: { id: postId } });
+    return { message: "post deleted" };
+  },
   // check if it is published or not
   // get writer by post id
   // ---------------------------
@@ -65,12 +82,13 @@ const db = {
   // delete comment make sure that only writer can do that
   //
 };
+// db.editPost(33, "hehe(edited)", "whatever", 1);
 // db.createWriter("jill1", "jill1@jill.com", "3123213", true);
 // db.getAllWriters();
 // db.createCatagory("programming languages");
 // db.editCatagory(4, "whatever");
 // db.deleteCatagory(4);
 // db.getAllCatagories();
-db.createPost("title of post 1", "body of post 1",1);
-db.getallPosts();
+// db.createPost("title of post 1", "body of post 1",1);
+// db.getallPosts();
 module.exports = db;

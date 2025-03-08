@@ -31,19 +31,23 @@ model Catagories {
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  title     String
-  body      String
+  id        Int        @id @default(autoincrement())
+  title     String @unique
+  body      String @unique
   writerId  Int
-  writer    Writer   @relation(fields: [writerId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  writer    Writer     @relation(fields: [writerId], references: [id])
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Comments  Comments[]
 }
 
 model Comments {
-  id        Int      @id @default(autoincrement())
-  username  String
-  email     String
-  content   String
-  createdAt DateTime @default(now())
+  id         Int      @id @default(autoincrement())
+  username   String
+  email      String
+  content    String
+  postId     Int
+  parentPost Post     @relation(fields: [postId], references: [id])
+  createdAt  DateTime @default(now())
+  softDelete Boolean  @default(false)
 }

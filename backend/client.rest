@@ -1,4 +1,3 @@
-GET http://localhost:2121/posts
 ###
 
 
@@ -6,30 +5,87 @@ GET http://localhost:2121/posts
 
 // /catagoires
 ###
-GET http://localhost:2121/catagory
+GET http://localhost:2121/api/v1/catagory
 ### 
-POST http://localhost:2121/catagory
+POST http://localhost:2121/api/v1/catagory
+Content-Type: application/json
+
+{
+    "name":"this is just another catagory name"
+}
+### 
+PUT http://localhost:2121/api/v1/catagory/3423
+Content-Type: application/json
+
+{
+"catagoryId":5,
+"catagoryName":"just a test catagory"
+}
 
 ### 
-PUT http://localhost:2121/catagory
-### 
-DELETE http://localhost:2121/catagory
+DELETE http://localhost:2121/api/v1/catagory/:catagoryId
+Content-Type: application/json
 
+{
+    "id":5
+}
 
 ###
 
 // /posts 
-GET http://localhost:2121/posts
-###
-POST http://localhost:2121/posts
-###
-PUT http://localhost:2121/posts
-###
-DELETE http://localhost:2121/posts
+GET http://localhost:2121/api/v1/posts
 
 ###
+// get posts for writer id
+POST http://localhost:2121/api/v1/posts/2
+
+
+###
+POST http://localhost:2121/api/v1/posts/create
+Content-Type: application/json
+
+{
+    "title" :"title os a post.",
+    "body":"data in the body of the post..",
+    "writerId":4 
+}
+###
+PUT http://localhost:2121/api/v1/posts/33
+Content-Type: application/json
+
+{
+    "title":"this post is edited",
+    "body": "this is post body edited",
+    "writerId":2
+}
+###
+DELETE http://localhost:2121/api/v1/posts/33
+###
+###
 
 
 
+// writer routes
+
+// get all writers
+GET http://localhost:2121/api/v1/writers
+// update writer
+###
+PUT http://locahost:2121/api/v1/writer/:writerId
+###
+
+
+
+// comments
+
+//get comments for a post
+GET http://localhost:2121/api/v1/:postId/comments
+###
+// add a comment 
+POST http://localhost:2121/api/v1/:postId/comment
+###
+// delete a comment, just soft delete it 
+
+DELETE http://localhost:2121/api/v1/:postId/:commentId
 
 

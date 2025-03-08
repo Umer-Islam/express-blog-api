@@ -9,7 +9,7 @@ const catagoriesRouter = Router();
 
 catagoriesRouter.get("/", catagoriesGet);
 catagoriesRouter.post("/", catagoriesPost);
-catagoriesRouter.put("/", catagoriesUpdate);
-catagoriesRouter.delete("/", catagoriesDelete);
+catagoriesRouter.put("/:catagoryId", catagoriesUpdate);
+catagoriesRouter.delete("/:catagoryId", catagoriesDelete);
 
 module.exports = catagoriesRouter;
