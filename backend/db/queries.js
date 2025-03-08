@@ -54,18 +54,23 @@ const db = {
     return posts;
   },
   // get a single post by id
-  getPostByPostId: async (params) => {},
+  // getPostByPostId: async (params) => {},
   // create post
   createPost: async (title, body, writerId) => {
-    await prisma.post.create({
-      data: { title, body, writerId },
-    });
+    try {
+      console.log({ title, body, writerId });
+      await prisma.post.create({
+        data: { title, body, writerId },
+      });
+    } catch (error) {
+      return error;
+    }
   },
   //edit post
   editPost: async (postId, title, body, writerId) => {
     await prisma.post.update({
       where: { id: postId },
-      data: { title, body },
+      data: { title, body, writerId },
     });
     return "post edited";
   },
@@ -82,6 +87,7 @@ const db = {
   // delete comment make sure that only writer can do that
   //
 };
+// db.deletePost(23)
 // db.editPost(33, "hehe(edited)", "whatever", 1);
 // db.createWriter("jill1", "jill1@jill.com", "3123213", true);
 // db.getAllWriters();

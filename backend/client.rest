@@ -41,25 +41,28 @@ POST http://localhost:2121/api/v1/posts/2
 
 
 ###
+//create a new post
+
 POST http://localhost:2121/api/v1/posts/create
 Content-Type: application/json
 
 {
-    "title" :"title os a post.",
-    "body":"data in the body of the post..",
-    "writerId":4 
+    "title":"title of new post",
+    "body":"body of new post",
+    "writerId":"2",
 }
 ###
-PUT http://localhost:2121/api/v1/posts/33
+//edit post
+PUT http://localhost:2121/api/v1/posts/34
 Content-Type: application/json
 
 {
     "title":"this post is edited",
     "body": "this is post body edited",
-    "writerId":2
+    "writerId":1
 }
 ###
-DELETE http://localhost:2121/api/v1/posts/33
+DELETE http://localhost:2121/api/v1/posts/26
 ###
 ###
 

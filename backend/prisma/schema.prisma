@@ -32,8 +32,8 @@ model Catagories {
 
 model Post {
   id        Int        @id @default(autoincrement())
-  title     String @unique
-  body      String @unique
+  title     String     @unique
+  body      String     @unique
   writerId  Int
   writer    Writer     @relation(fields: [writerId], references: [id])
   createdAt DateTime   @default(now())

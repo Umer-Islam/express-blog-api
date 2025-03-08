@@ -24,8 +24,10 @@ const postsController = {
   postsCreate: async (req, res) => {
     try {
       const { title, body, writerId } = req.body;
-      console.log(title + body + writerId);
+      console.log(req.body);
+      console.log(title + body + typeof writerId);
       await db.createPost(title, body, writerId);
+      res.json({ status: "success", message: "post created" });
     } catch (error) {
       console.log(error);
       res.json({ status: "error", error });
