@@ -59,9 +59,10 @@ const db = {
   createPost: async (title, body, writerId) => {
     try {
       // console.log({ title, body, writerId });
-      await prisma.post.create({
+      const postCreate = await prisma.post.create({
         data: { title, body, writerId },
       });
+      return postCreate;
     } catch (error) {
       return error;
     }
