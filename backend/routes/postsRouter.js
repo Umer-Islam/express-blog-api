@@ -9,7 +9,7 @@ const {
 const postsRouter = Router();
 
 postsRouter.get("/", postsGet);
-postsRouter.post("/:writerId", writerIdPostsGet);
+postsRouter.get("/:writerId", writerIdPostsGet);
 postsRouter.post("/create", postsCreate);
 postsRouter.put("/:postId", postsUpdate);
 postsRouter.delete("/:postId", postsDelete);
