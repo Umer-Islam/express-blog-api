@@ -1,5 +1,3 @@
-###
-
 
 
 
@@ -80,15 +78,25 @@ PUT http://locahost:2121/api/v1/writer/:writerId
 
 
 // comments
-
+// get all comments
+GET http://localhost:2121/api/v1/comments
+###
 //get comments for a post
-GET http://localhost:2121/api/v1/:postId/comments
+GET http://localhost:2121/api/v1/comments/34
 ###
-// add a comment 
-POST http://localhost:2121/api/v1/:postId/comment
-###
-// delete a comment, just soft delete it 
+// add a comment , make sure that post exists before making a comment
+#  /:postId
+POST http://localhost:2121/api/v1/comments/post/34
+Content-Type: application/json
 
-DELETE http://localhost:2121/api/v1/:postId/:commentId
+{
+    "username":"rest client",
+    "email":"rest@client",
+    "content":"test comment by rest client"
+}
+###
+// delete a comment, 
+# /:postId/:commentId
+DELETE http://localhost:2121/api/v1/comments/34/10
 
 
