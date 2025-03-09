@@ -24,12 +24,12 @@ const postsController = {
   postsCreate: async (req, res) => {
     try {
       const { title, body, writerId } = req.body;
-      console.log(req.body);
-      console.log(title + body + typeof writerId);
-      await db.createPost(title, body, writerId);
-      res.json({ status: "success", message: "post created" });
+      const newPost = await db.createPost( title, body, writerId  );
+      console.log(newPost);
+      res.json({ status: "success", message: "post created", data: newPost });
     } catch (error) {
       console.log(error);
+      // console.log(error)
       res.json({ status: "error", error });
     }
   },
