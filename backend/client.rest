@@ -35,7 +35,7 @@ GET http://localhost:2121/api/v1/posts
 
 ###
 // get posts for writer id
-POST http://localhost:2121/api/v1/posts/2
+Get http://localhost:2121/api/v1/posts/1
 
 
 ###
@@ -45,9 +45,9 @@ POST http://localhost:2121/api/v1/posts/create
 Content-Type: application/json
 
 {
-    "title":"title of new post",
-    "body":"body of new post",
-    "writerId":"2",
+  "title":"post from rest client",
+  "body":"post body from rest",
+  "writerId" : 1
 }
 ###
 //edit post
